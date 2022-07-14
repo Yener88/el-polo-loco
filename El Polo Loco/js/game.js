@@ -1,55 +1,39 @@
-let canvas;
 let world;
+let canvas;
 
 
-function init() {
-    keyboard = new Keyboard();
+init = () => {
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
-    console.log('My Character is', world.character)
 }
 
 
-window.addEventListener("keydown", (e) => {
-    console.log(e.keyCode);
-    if (e.keyCode == 39) {
-        keyboard.RIGHT = true;
-    }
-    if (e.keyCode == 37) {
-        keyboard.LEFT = true;
-    }
-    if (e.keyCode == 40) {
-        keyboard.DOWN = true;
-    }
-    if (e.keyCode == 38) {
-        keyboard.UP = true;
-    }
-    if (e.keyCode == 32) {
-        keyboard.SPACE = true;
-    }
-    if (e.keyCode == 86) {
-        keyboard.V = true;
-    }
-});
+startGame = () => {
+    world = new World(canvas, level1);
+    world.resumeGame();
+    document.getElementById('startButton').classList.add('d-none');
+    document.getElementById('stopButton').classList.remove('d-none');
+    document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('control-description').classList.remove('show-description');
+}
 
 
-window.addEventListener("keyup", (e) => {
-    if (e.keyCode == 39) {
-        keyboard.RIGHT = false;
+showControlDescription = () => {
+    let description = document.getElementById('control-description');
+    if(!description.classList.contains('show-description')) {
+        description.classList.add('show-description');
+    } else {
+        description.classList.remove('show-description');
     }
-    if (e.keyCode == 37) {
-        keyboard.LEFT = false;
-    }
-    if (e.keyCode == 40) {
-        keyboard.DOWN = false;
-    }
-    if (e.keyCode == 38) {
-        keyboard.UP = false;
-    }
-    if (e.keyCode == 32) {
-        keyboard.SPACE = false;
-    }
-    if (e.keyCode == 86) {
-        keyboard.V = true;
-    }
-});
+}
+
+
+addEventListener('keydown', (event) => {
+    let stopButton = document.getElementById('stopButton');
+    if(event.code == 'Enter'){
+        if(!stopButton.classList.contains('d-none')) {
+            world.stopGame();
+        } else {
+            world.resumeGame();
+        }
+    };
+})
