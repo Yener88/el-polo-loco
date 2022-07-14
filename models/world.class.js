@@ -36,7 +36,6 @@ class World {
 
 
     stopGame() {
-        //this.gameStopped = true;
         document.getElementById('stopButton').classList.add('d-none');
         document.getElementById('resumeButton').classList.remove('d-none');
         this.stopCharacter();

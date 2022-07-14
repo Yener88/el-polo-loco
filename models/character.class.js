@@ -16,7 +16,6 @@ class Character extends MovableObject {
         'img/pepe/idle/i8.png',
         'img/pepe/idle/i9.png',
         'img/pepe/idle/i10.png'
-
     ];
 
 
@@ -60,7 +59,18 @@ class Character extends MovableObject {
         'img/pepe/dead/d56.png',
         'img/pepe/dead/d57.png'
     ];
-    
+
+    soundWalk = new Audio('audio/walk.mp3');
+    soundJump = new Audio('audio/jump.mp3');
+    soundHurt = new Audio('audio/hurt.mp3');
+    soundKill = new Audio('audio/kill.mp3');
+    soundCoin = new Audio('audio/coin.mp3');
+    soundLife = new Audio('audio/life.mp3');
+    soundLose = new Audio('audio/lose.mp3');
+    soundTheme = new Audio('audio/theme.mp3');
+    soundBCollect = new Audio('audio/bottlecollect.mp3');
+    soundBThrow = new Audio('audio/bottlethrow.mp3');
+
 
     constructor(world) {
         super();
@@ -95,6 +105,7 @@ class Character extends MovableObject {
                 this.mustWalk = false;
                 this.mustJump = true;
                 this.jump();
+                this.soundJump.play();
             }
 
             if (this.isAboveGround()) {
@@ -115,13 +126,27 @@ class Character extends MovableObject {
     characterAnimation() {
         this.animationTimer = setInterval(() => {
             if (this.isDead) {
-                this.playAnimation(this.IMAGES_DEAD)
+                this.playAnimation(this.IMAGES_DEAD);
                 this.gameOver();
+                this.soundLose.play();
             }
-            else if (this.isHurt) { this.playAnimation(this.IMAGES_HURTING) }
-            else if (this.mustIdle) { this.playAnimation(this.IMAGES_IDLE) }
-            else if (this.mustWalk) { this.playAnimation(this.IMAGES_WALKING) }
-            else if (this.mustJump) { this.playAnimation(this.IMAGES_JUMPING) }
+            else if (this.isHurt) {
+                this.playAnimation(this.IMAGES_HURTING);
+                this.soundWalk.pause();
+            }
+            else if (this.mustIdle) {
+                this.playAnimation(this.IMAGES_IDLE);
+                this.soundWalk.pause();
+            }
+            else if (this.mustWalk) {
+                this.playAnimation(this.IMAGES_WALKING);
+                this.soundWalk.play();
+                this.soundWalk.loop = true;
+            }
+            else if (this.mustJump) {
+                this.playAnimation(this.IMAGES_JUMPING);
+                this.soundWalk.pause();
+            }
         }, 150);
     }
 
@@ -154,12 +179,14 @@ class Character extends MovableObject {
     jump() {
         this.currentImage = 3;
         this.speedY = 20;
+
     }
 
 
     hit() {
         if (!this.isHurt) {
             this.isHurt = true;
+            this.soundHurt.play();
             this.health -= 20;
             this.world.healthbar.setHealth();
             console.log('lost Health:' + this.health);
@@ -177,6 +204,7 @@ class Character extends MovableObject {
     throw() {
         if (!this.bottleThrown && this.world.bottleCounter.counter > 0) {
             this.bottleThrown = true;
+            this.soundBThrow.play();
             this.world.throwableObjects.push(new ThrowableObject(this.x + 100, this.y + 100, this.world, this.direction));
             this.world.bottleCounter.counter--;
             setTimeout(() => {
@@ -210,6 +238,7 @@ class Character extends MovableObject {
             }
             if (this.jumpsOnTop(chicken) && this.speedY < 0) {
                 chicken.isDead = true;
+                this.soundKill.play();
             }
         })
     }
@@ -232,6 +261,7 @@ class Character extends MovableObject {
 
             if (this.jumpsOnTop(chick) && this.speedY < 0) {
                 chick.isDead = true;
+                this.soundKill.play();
             }
         })
     }
@@ -241,6 +271,7 @@ class Character extends MovableObject {
         this.world.level.bottles.forEach((bottle) => {
             if (this.isColliding(bottle)) {
                 this.world.bottleCounter.counter++;
+                this.soundBCollect.play();
                 bottle.removeBottle();
             }
         })
@@ -251,12 +282,13 @@ class Character extends MovableObject {
         this.world.level.coins.forEach((coin) => {
             if (this.isColliding(coin)) {
                 this.world.coinCounter.counter++;
+                this.soundCoin.play();
                 coin.removeCoin();
             }
         })
     }
 
-    
+
     collectHealth() {
         this.world.level.health.forEach((health) => {
             if (this.isColliding(health)) {
@@ -264,9 +296,11 @@ class Character extends MovableObject {
                     this.health += 10;
                     health.removeHealth();
                     this.world.healthbar.setHealth();
+                    this.soundLife.play();
                 }
             }
         })
+
     }
 
 
@@ -275,6 +309,8 @@ class Character extends MovableObject {
         this.characterControl();
         this.characterAnimation();
         this.checkCollisions();
+        this.soundTheme.play();
+        this.soundTheme.loop = true;
     }
 
 
@@ -283,5 +319,6 @@ class Character extends MovableObject {
         clearInterval(this.animationTimer);
         clearInterval(this.collisionTimer);
         clearInterval(this.movementTimer);
+        this.soundTheme.pause();
     }
 }

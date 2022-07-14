@@ -7,7 +7,7 @@ class ThrowableObject extends MovableObject {
     objectHit = false;
     stopSplash = false;
     objectHit = false;
-
+    soundBSmash = new Audio('audio/bottlesmash.mp3');
 
     IMAGES_BOTTLE = [
         'img/collectableobjects/bottle/throw/throwanimation1.png',
@@ -80,6 +80,7 @@ class ThrowableObject extends MovableObject {
         if (this.stopSplash) {
             this.stopSplash = false;
             this.currentImage = 0;
+            this.soundBSmash.play();
             clearInterval(this.splashTimer);
             setTimeout(() => {
                 this.objectHit = false;

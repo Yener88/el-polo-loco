@@ -7,6 +7,7 @@ class Endboss extends MovableObject {
     bossIsFinished = false;
 
 
+
     IMAGES_WALKING = [
         'img/endboss/walk/bw1.png',
         'img/endboss/walk/bw2.png',
@@ -39,6 +40,9 @@ class Endboss extends MovableObject {
         'img/endboss/dead/bd2.png',
         'img/endboss/dead/bd3.png'
     ];
+
+    soundBossHurt = new Audio('audio/bosshurt.mp3');
+    soundWin = new Audio('audio/win.mp3');
 
 
     constructor(x, world) {
@@ -140,6 +144,7 @@ class Endboss extends MovableObject {
 
     gotKilled() {
         if (!this.bossIsFinished) {
+            this.soundBossHurt.play();
             this.bossIsFinished = true;
             setTimeout(() => {
                 clearInterval(this.animationTimer);
@@ -164,6 +169,7 @@ class Endboss extends MovableObject {
                 document.getElementById('restartButton').classList.add('showResult');
                 document.getElementById('resumeButton').classList.add('d-none');
                 document.getElementById('win-text').classList.remove('d-none');
+                this.soundWin.play();
             }
         }, 2000)
     }

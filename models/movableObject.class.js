@@ -16,6 +16,7 @@ class MovableObject extends DrawableObject {
     movementTimer;
 
 
+
     applyGravity() {
         this.gravityTimer = setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -45,7 +46,7 @@ class MovableObject extends DrawableObject {
 
 
     moveCharacter(speed) {
-        this.x += speed * this.direction;
+        this.x += speed = 6 * this.direction;
     }
 
 
