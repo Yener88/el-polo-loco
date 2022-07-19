@@ -31,10 +31,13 @@
     <script src="./models/world.class.js"></script>
 
     <script src="./js/game.js"></script>
+    <script src="./js/fullscreen.js"></script>
+
+
 </head>
 
 <body onload="init()">
-    <div class="game-container">
+    <div class="game-container" id="fullscreenarea" >
         <div class="button-bar">
             <button id="startButton" class="gameButton" onclick="startGame()">Start</button>
             <button id="stopButton" class="gameButton d-none" onclick="world.stopGame()">Stop</button>
@@ -52,9 +55,10 @@
             <img src="img/screens/keyleft.png"><span>Move Left</span>
             <img src="img/screens/keyup.png"><span>Jump</span>
             <img src="img/screens/keyright.png"><span>Move Right</span>
-            <div class="space-button">SPACE<img src="img/screens/keyspace.png"></div><span>Throw Bottle</span>
+            <div class="space-button"><img src="img/screens/keyspace.png"></div><span>Throw Bottle</span>
             <img src="img/screens/return.png"><span>Pause</span>
         </div>
+        <div class="fullscreen" id="dontshowfullbtn" onclick="makeFullScreen()">full</div>
     </div>
 </body>
 

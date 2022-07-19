@@ -86,12 +86,10 @@ class Character extends MovableObject {
 
     characterControl() {
         this.movementTimer = setInterval(() => {
-
             if (!this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.up) {
                 this.mustIdle = true;
                 this.mustWalk = false;
             }
-
             if (this.world.keyboard.right || this.world.keyboard.left) {
                 if (this.world.keyboard.right) { this.direction = 1 }
                 else { this.direction = -1 }
@@ -99,7 +97,6 @@ class Character extends MovableObject {
                 this.mustWalk = true;
                 this.walk();
             }
-
             if (this.world.keyboard.up && !this.isAboveGround()) {
                 this.mustIdle = false;
                 this.mustWalk = false;
@@ -107,17 +104,14 @@ class Character extends MovableObject {
                 this.jump();
                 this.soundJump.play();
             }
-
             if (this.isAboveGround()) {
                 this.mustIdle = false;
                 this.mustWalk = false;
                 this.mustJump = true;
             } else { this.mustJump = false }
-
             if (this.world.keyboard.space) {
                 this.throw();
             }
-
             this.cameraFocus();
         }, 1000 / 60);
     }
@@ -129,6 +123,7 @@ class Character extends MovableObject {
                 this.playAnimation(this.IMAGES_DEAD);
                 this.gameOver();
                 this.soundLose.play();
+                this.soundWalk.pause();
             }
             else if (this.isHurt) {
                 this.playAnimation(this.IMAGES_HURTING);
@@ -179,7 +174,6 @@ class Character extends MovableObject {
     jump() {
         this.currentImage = 3;
         this.speedY = 20;
-
     }
 
 
@@ -258,7 +252,6 @@ class Character extends MovableObject {
             if (this.isColliding(chick) && !chick.isDead && !this.isAboveGround()) {
                 this.hit();
             }
-
             if (this.jumpsOnTop(chick) && this.speedY < 0) {
                 chick.isDead = true;
                 this.soundKill.play();

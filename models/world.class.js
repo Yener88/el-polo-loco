@@ -197,7 +197,7 @@ class World {
 
 
     drawNumber() {
-        this.ctx.font = '25px Viaoda Libre Bold';
+        this.ctx.font = '25px viaoda libre bold';
         this.ctx.fillText('x ' + this.bottleCounter.counter, 80, 105);
         this.ctx.fillText('x ' + this.coinCounter.counter, 80, 155);
     }
@@ -207,18 +207,15 @@ class World {
         this.level.boss.forEach((boss) => {
             boss.world = this;
         })
-
         this.level.chicken.forEach((chicken) => {
             chicken.world = this;
         })
-
         this.level.bottles.forEach((bottle) => {
             bottle.world = this;
         })
         this.level.coins.forEach((coin) => {
             coin.world = this;
         })
-
         this.level.health.forEach((health) => {
             health.world = this;
         })

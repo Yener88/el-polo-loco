@@ -19,6 +19,7 @@ button {
     filter: brightness(90%);
     border: none;
     transition: all 500ms ease-in-out;
+    letter-spacing: 3px;
 }
 
 button:hover {
@@ -35,7 +36,22 @@ span {
     width: 960px;
     display: flex;
     flex-direction: column;
+    border-top: 4px solid #ff7b002c;
+    border-radius: 15px;
 }
+
+/* .game-container:fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  } */
 
 #startScreen {
     position: absolute;
@@ -55,7 +71,7 @@ span {
 .gameButton {
     height: 50px;
     width: 960px;
-    font-size: 20px;
+    font-size: 26px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     filter: brightness(90%);
@@ -67,11 +83,13 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-size: 28px;
+    font-weight: bolder;
     background-color: #ffa703;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     filter: brightness(90%);
+    letter-spacing: 5px;
 }
 
 .d-none {
@@ -99,6 +117,7 @@ span {
     left: 0;
     height: 540px;
     width: 960px;
+    letter-spacing: 3px;
 }
 
 #gameWon {
@@ -136,40 +155,26 @@ span {
     width: 120px;
     height: 50px;
     border-top-left-radius: 15px;
-    font-size: 18px;
+    font-size: 24px;
 }
-
-/* #sound {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 120px;
-    height: 50px;
-}
-
-#sound img {
-    position: absolute;
-    top: calc(50% - 15px);
-    right: calc(50% - 15px);
-    height: 30px;
-} */
 
 .control-description {
     position: absolute;
     top: 590px;
     width: 960px;
-    background-color: #8a5a00;
+    background-color: #ff8703;
+    filter: brightness(90%);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: lightgray;
     height: 0px;
     overflow: hidden;
     transition: height 225ms ease-in-out;
     font-size: 26px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    letter-spacing: 2px;
 }
 
 .show-description {
@@ -181,8 +186,8 @@ span {
 }
 
 .control-description span {
-    margin-left: 5px;
-    margin-right: 40px;
+    margin-left: 10px;
+    margin-right: 20px;
 
 }
 
@@ -196,12 +201,23 @@ span {
 }
 
 .space-button img {
-    width: 60px;
-    height: 20px;
+    width: 75px;
+    height: 35px;
 }
 
 a {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.fullscreen {
+    position: absolute;
+    left: 940px;
+    bottom: 80px;
+    cursor: pointer;
+    filter: brightness(90%);
+}
+.fullscreen:hover {
+    filter: brightness(100%);
 }
