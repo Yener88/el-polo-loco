@@ -183,7 +183,6 @@ class Character extends MovableObject {
             this.soundHurt.play();
             this.health -= 20;
             this.world.healthbar.setHealth();
-            console.log('lost Health:' + this.health);
             if (this.health <= 0) {
                 this.isDead = true;
             } else {

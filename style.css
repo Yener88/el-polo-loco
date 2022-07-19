@@ -221,3 +221,26 @@ a {
 .fullscreen:hover {
     filter: brightness(100%);
 }
+
+@media only screen and (max-width: 960px) {
+    .game-container {
+        width: 100%;
+    }
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 540px) {
+    .game-container {
+        height: 100vh;
+    }
+    canvas {
+        height: 100vh;
+    }
+}
+
+
+/* RESPONSIVE PASST SICH NICHT AN */
+/* FULLSCRREN NICHT KOMPLETT NUR CANVAS */
+/* RESPONSIVE BUTTONS DANACH HINZUFÜGEN */
