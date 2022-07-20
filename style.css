@@ -247,10 +247,15 @@ a {
 .btnstyle {
     width: 100%;
     border-radius: 40px;
-    
+
 }
 
 @media only screen and (max-width: 960px) {
+
+    .fullscreen {
+        display: none;
+    }
+
     .btndnone {
         display: block;
     }
@@ -285,6 +290,10 @@ a {
 }
 
 @media only screen and (max-height: 540px) {
+    .fullscreen {
+        display: none;
+    }
+
     .btndnone {
         display: block;
     }
