@@ -1,7 +1,6 @@
 function makeFullScreen() {
     var element = document.getElementById("fullscreenarea");
     if (!document.Fullscreen && !document.webkitFullScreen && !document.msRequestFullscreen) {
-        document.getElementById('dontshowfullbtn').classList.add('d-none');
       if (element.requestFullScreen) {
         element.requestFullScreen();
       } else if (element.webkitRequestFullScreen) {
@@ -20,5 +19,4 @@ function makeFullScreen() {
         }
       }
     }
-    document.getElementById('dontshowfullbtn').classList.remove('d-none');
   }

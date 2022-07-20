@@ -46,19 +46,33 @@
             <div id="lose-text" class="result-text d-none">Game Over !</div>
         </div>
         <img id="startScreen" src="img/screens/startscreen.png">
-        <canvas id="canvas" width="960" height="540"></canvas>
+        <canvas id="canvas" width="960" height="540">
+        </canvas>
+        <button class="btnleft btndnone" id="btnLeft">
+            <img src="img/screens/btnleft.png">
+        </button>
+        <button class="btnright btndnone" id="btnRight">
+            <img src="img/screens/btnright.png">
+        </button>
+        <button class="btnjump btndnone" id="btnJump">
+            <img src="img/screens/btnjump.png">
+        </button>
+        <button class="btnthrow btndnone" id="btnThrow">
+            <img src="img/screens/btnthrow.png">
+        </button>
+
         <img id="gameWon" class="gameResult" src="img/screens/win.png">
         <img id="gameOver" class="gameResult" src="img/screens/youlost.png">
         <button id="restartButton" class="restart" onclick="world.restartGame()">RESTART</button>
-        <button id="controls" onclick="showControlDescription()">Controls</button>
-        <div id="control-description" class="control-description show-description">
+        <button id="controls" class="dnoneresponsiv" onclick="showControlDescription()">Controls</button>
+        <div id="control-description" class="control-description show-description dnoneresponsiv">
             <img src="img/screens/keyleft.png"><span>Move Left</span>
             <img src="img/screens/keyup.png"><span>Jump</span>
             <img src="img/screens/keyright.png"><span>Move Right</span>
             <div class="space-button"><img src="img/screens/keyspace.png"></div><span>Throw Bottle</span>
             <img src="img/screens/return.png"><span>Pause</span>
         </div>
-        <div class="fullscreen" id="dontshowfullbtn" onclick="makeFullScreen()">full</div>
+        <div class="fullscreen" id="dontshowfullbtn" onclick="makeFullScreen()"><img src="img/screens/fullscreen.png" style="width: 18px;"></div>
     </div>
 </body>
 
