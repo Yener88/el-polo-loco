@@ -204,48 +204,50 @@ a {
     position: absolute;
     bottom: 20px;
     left: 30px;
-    border-radius: 40px;
-    padding: 10px;
+    border-radius: 100%;
+    padding: 20px;
     background: rgba(0, 0, 0, 0.432);
-    border: 1px solid black;
-    opacity: 0.7;
+    opacity: 0.45;
 }
 
 .btnright {
     position: absolute;
     bottom: 20px;
     left: 200px;
-    border-radius: 40px;
-    padding: 10px;
+    border-radius: 100%;
+    padding: 20px;
     background: rgba(0, 0, 0, 0.432);
-    border: 1px solid black;
-    opacity: 0.7;
+    opacity: 0.45;
 }
 
 .btnjump {
     position: absolute;
     bottom: 20px;
     right: 200px;
-    border-radius: 40px;
-    padding: 10px;
+    border-radius: 100%;
+    padding: 20px;
     background: rgba(0, 0, 0, 0.432);
-    border: 1px solid black;
-    opacity: 0.7;
+    opacity: 0.45;
 }
 
 .btnthrow {
     position: absolute;
     bottom: 20px;
     right: 30px;
-    border-radius: 40px;
-    padding: 10px;
+    border-radius: 100%;
+    padding: 20px;
     background: rgba(0, 0, 0, 0.432);
-    border: 1px solid black;
-    opacity: 0.7;
+    opacity: 0.45;
 }
 
 .btndnone {
     display: none;
+}
+
+.btnstyle {
+    width: 100%;
+    border-radius: 40px;
+    
 }
 
 @media only screen and (max-width: 960px) {
@@ -275,7 +277,7 @@ a {
         font-size: 20px;
     }
 
-    .result-text {
+    .result-text, .gameButton {
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
     }
@@ -288,7 +290,7 @@ a {
     }
 
     .game-container {
-        height: 100vh;
+        height: 101vh;
         overflow: hidden;
         border-radius: 0px;
     }
@@ -313,7 +315,7 @@ a {
         height: 88%;
     }
 
-    .result-text {
+    .result-text, .gameButton {
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
     }
